@@ -27,6 +27,8 @@ Correctifs apportés :  // On obtient le temps passé dans le parking en Millis
 //Appel de la method de formatage sur le resultat afin d'avoir 2 nb apres la virgule.
 System.out.println("Please pay the parking fare:" + decimalFormat.format(ticket.getPrice()) + " $ ");
 
-9- Ajout de la methode de test CalculateFareBikeMoreThanOneMonth() &  public void calculateFareCarMoreThanOneMonth() afin de verifier si le vehicule reste un jour une semaine ou un mois rien ne plante.
+9- Ajout de la methode de test CalculateFareBikeMoreThanOneMonth() &  public void calculateFareCarMoreThanOneMonth() afin de verifier si le vehicule reste un jour une semaine ou un mois rien ne plante.	
+	
+10- Dans les constantes ajout de : and t.OUT_TIME is NULL afin qu'en cas de doublon on sort bien le doublon qui n'est pas encore sorti
 
-10- 
+
