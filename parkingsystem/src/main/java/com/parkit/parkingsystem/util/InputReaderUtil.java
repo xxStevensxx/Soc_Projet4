@@ -3,16 +3,19 @@ package com.parkit.parkingsystem.util;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.parkit.parkingsystem.constants.DBConstants;
+
 import java.util.Scanner;
 
 public class InputReaderUtil {
 
     private static Scanner scan = new Scanner(System.in);
     private static final Logger logger = LogManager.getLogger("InputReaderUtil");
-
+ 
     public int readSelection() {
         try {
             int input = Integer.parseInt(scan.nextLine());
+            System.out.print(input);
             return input;
         }catch(Exception e){
             logger.error("Error while reading user input from Shell", e);
@@ -23,10 +26,11 @@ public class InputReaderUtil {
 
     public String readVehicleRegistrationNumber() throws Exception {
         try {
-            String vehicleRegNumber= scan.nextLine();
+            String vehicleRegNumber = scan.nextLine();
             if(vehicleRegNumber == null || vehicleRegNumber.trim().length()==0) {
                 throw new IllegalArgumentException("Invalid input provided");
             }
+            System.out.print(" Ma VOiture " + vehicleRegNumber + " ");
             return vehicleRegNumber;
         }catch(Exception e){
             logger.error("Error while reading user input from Shell", e);
