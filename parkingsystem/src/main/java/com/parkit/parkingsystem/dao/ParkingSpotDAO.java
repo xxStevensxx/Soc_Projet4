@@ -1,5 +1,6 @@
 package com.parkit.parkingsystem.dao;
 
+import com.mysql.cj.jdbc.result.ResultSetMetaData;
 import com.parkit.parkingsystem.config.DataBaseConfig;
 import com.parkit.parkingsystem.constants.DBConstants;
 import com.parkit.parkingsystem.constants.ParkingType;
@@ -80,6 +81,28 @@ public class ParkingSpotDAO {
         }finally {
             dataBaseConfig.closeConnection(con);
         }
-    }
+    }   
     
+    public void duplicate(){
+        Connection con = null;
+        try {
+        	String result;
+            con = dataBaseConfig.getConnection();
+            
+            PreparedStatement ps = con.prepareStatement(DBConstants.DUPLICATE);
+            ResultSet rs = ps.executeQuery();
+            java.sql.ResultSetMetaData infoRs = rs.getMetaData();
+            if(((ResultSet) infoRs).next()){
+                result = ((ResultSet) infoRs).getString(1);
+                System.out.print(" Vehicule deja venu : " + result);
+            }  
+            
+            dataBaseConfig.closePreparedStatement(ps);   
+            
+        }catch (Exception ex){
+            logger.error("",ex);
+        }finally {
+            dataBaseConfig.closeConnection(con);
+        }
+    }  
 }
